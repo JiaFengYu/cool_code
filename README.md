@@ -1,1 +1,2 @@
-# some cool code that I wrote that I wanna save
+# cool_code
+some cool code that I wrote that I wanna save
