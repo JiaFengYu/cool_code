@@ -1,1 +1,0 @@
-g++ -std=c++17 -Wall -g prog2.cpp -o marble
