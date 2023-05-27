@@ -1,0 +1,38 @@
+Part 1
+(a) The Manhattan distance heuristic performs better because it considers the distance between 
+the current tile and its desired location while the misplaced tile only considers how many are 
+misplaced. The number of misplaced tiles is "included" in the Manhattan distance since the
+Manhattan distance considers all tiles and strictly offers more information for the search.
+Hence it would make intuitive sense for the Manhattan distance to do better, as it simply
+gives more information for the search to use.
+
+(b) Misplaced tile heuristic: since each misplaced tile requires at least one additional
+move to reach its correct position, hence the estimated cost of reaching the goal state 
+is at least equal to the number of misplaced tiles. When moving from a current state 
+to a successor state by swapping a tile, the cost of that move is 1, 
+and the number of misplaced tiles in the successor state can be at most one less than 
+the number of misplaced tiles in the current state. 
+Therefore, the estimated cost from the successor state to the goal state is less 
+than or equal to the estimated cost from the current state to the goal state, plus 1,
+making the misplaced tile heuristic consistent.
+
+Manhattan distance heuristic: When moving 1 tile, 
+the distance between any two tiles can decrease by at most 1 (by either moving 
+vertically or horizontally). 
+Therefore, the estimated cost from the successor state to the goal state is less 
+than or equal to the estimated cost from the current state to the goal state plus 1. 
+Hence, the Manhattan distance heuristic is also consistent.
+However, this wouldn't necessarily hold if we allowed for diagonal movements, but 
+if we do not assume such rule, then it is consistent.
+
+Part 2
+(a) IDA* notably has polynomial space complexity of O(bd) as opposed to A*'s exponential
+time complexity, but still exponential time complexity as in A*.
+(b) Yes, IDA* is complete because it will eventually consider all possibilities;
+it might take a very long time (hence the exponential time complexity) but if there 
+does exist a solution, IDA* will eventually find it. 
+(c) Yes, IDA* is optimal, but this is only true if the used heuristic is admissible.
+This is because A* is optimal if the used heuristic is admissible, and since IDA* is 
+just A* applied with an iterative deepening approach, it should be obvious that the
+intrisic properties of A* are inherited by IDA*. If the heuristic isn't admissible,
+then it IDA* isn't guaranteed to be optimal.

@@ -1,0 +1,31 @@
+(a) The CSP can be described as follows:
+V = {V_1, V_2, ..., V_N} is set of variables, where N <= 81
+D = {D_1, D_2, ..., D_N} is the set of all domains, where D_i = {1,...,9}
+C = {C_1, C_1, ..., C_N} is the set of all constraints.
+
+Each V_i is mapped to a coordinate on the sudoku plane which is empty, and thus 
+can be changed. It should be obvious that we can have at most 81 variables. 
+The domain is simply all values that a coordinate can take, ie, any integer
+from 1-9.
+The constraints can be described as follows:
+(There is an implicit mapping from V_x to V_y,z)
+1. V_i,j = a -> V_i,k != a for all k != j 
+2. V_i,j = a -> V_k,j != a for all k != i
+3. V_i,j = a -> any V in its "neighborhood" != a
+This "neighborhood" can be obtained by taking the coordinates of V_i,j and 
+integer dividing i,j by 3 to obtain which "quadrant" of the 3 V_i,j is in.
+This division results an integer in {0,1,2}.
+Then, we simply multiply it by 3 to obtain the starting coordinates of that
+quadrant, and we take all permutations of {+0, +1, +2} to those coordinates 
+to obtain all 9 coordinates of that quadrant and we verify that all
+variables that are in that quadrant that != V_i,j cannot be a.
+These 3 constraints can be grouped together as a set and mapped to C_i.
+
+Note that this definition of C assumes that the initial state of the board 
+is valid. Alternatively if such assumption is not valid, we can have 81 C_i's 
+as contraints where the constraints are identical to the first definition, just
+now that we have a constraint for each case in the sudoku grid, even for the 
+coordinates that are given at the start. 
+
+Furthermore, it depending on the initial setup of the board, there might be more than
+1 satisfying assignment to solve this CSP.

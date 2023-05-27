@@ -1,0 +1,30 @@
+                                                        Time (s)
+                  B                                   BFC                                     BFC+H
+Easy:       0.126288589 +/- 0.25483595974788    0.019710338 +/- 0.0012995750788454         0.002643836 +/- 0.0011647305005571
+Medium:     1.3359534398255 +/- 0.79202127      0.00108132646 +/-  0.00011886499801375     0.003956255 +/- 0.0018555890125049
+Hard:       43.4438676 +/- 54.975642799278      0.026859422 +/- 0.0020735743913629         0.0076823074 +/- 0.0033744158044413    
+Evil:       596.17                              0.63478126 +/- 0.11108412236892            0.0070505806 +/- 0.0039190897960319 
+
+                                    Nodes expanded
+                B                                   BFC                     BFC+H
+Easy:    181755.76 +/- 354850.96205639    2541.24 +/- 127.02622721312       45 +/- 0
+Medium:  1166828.22 +/- 1968778.684695    127 +/- 0                         100 +/- 0
+Hard:    46941292.86 +/- 65098486.057249  3504.82+/- 237.48209953594        192 +/- 0
+Evil:    807525659                        73122 +/- 0                       100 +/- 0
+
+Algorithm performance explanation:
+It should be obvious that standard, randomized backtracking is by far the slowest out the 3 algorithms.
+Furthermore, we can see that the runtime is directly corrolated to the number of nodes expaned, as 
+would intuition dictate.
+We see that there is a stark increase in performance from using forward checking vs not using it,
+implementing the heuristic does yield some slight speed boosts, although they are neglectable in real
+time as CPU usage and speed becomes more of a bottleneck than anything else.
+In addition, we see that the number of nodes expanded remains constant for all puzzles and with a 
+standard deviation of 0 when using the heurisitic version of the algorithm, which should be obvious
+since everything is now systematic and changing the seed doesn't matter because we are not using 
+any stochastic processes in the resolutin procedure.
+The only anomaly in my data concerns the BFC algorithm's performance on the medium and evil puzzles
+in terms of nodes expanded: it seems that throughout all 50 runs it remains constant for some reason,
+I tried changing the seed more dramatically but to no result. Perhaps a property of the initial state
+of those 2 puzzles is different than for easy and hard.
+Overall, the results agree with standard intuition and it was a fun exercise to develop such algorithms.
