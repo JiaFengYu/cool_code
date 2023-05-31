@@ -1,0 +1,18 @@
+I tested my algorithm using the 1 move, 10 move, 16 move, 20 move, and 40 move 4x4 puzzles and took note of the the number of board positions checked
+and compared them with the total amount of moves needed to reach the solution. 
+Here are my results:
+For 1 move - 1 board checked
+For 10 moves - 16 boards checked
+For 16 moves - 32 boards checked 
+For 20 moves - 32 boards checked 
+For 25 moves - 552 boards checked
+For 40 moves - 422059 boards checked (and over 100 seconds time running the algorithm...)
+
+Note: These were all run using the Manhattan distance, and not the hamming distance, as it was significantly faster than the hamming distance.
+Especially for 25 and 40, it simply took too long to run using the hamming distance, so I did not take down any results.
+
+It seems that there is a very fast exponential exponential growth as soon as it passes 20 moves.
+This is probably explained by the fact that the higher the number of moves needed, the more neighbors boards the algorithm has to check
+and calculate their distance from the actual solution of the board. More moves also means there are more possible cases where the distance from the 
+solution are the same, so there are more cases to check. This does not mean much at smaller number of moves checked, but when puzzles become more complex, 
+everything stacks up and thus increases the complexity of the problem, taking more time to find the correct result. 
